@@ -23,7 +23,6 @@ export const getData = (req, res) => {
 
 export const revealData = async (req, res) => {
 
-    console.log(req.body.tokenisedData)
     // console.log(process.env.VGS_PEM)
     // const pem = process.env.VGS_PEM.replace(/\\n/g, '\n');
     // console.log(pem)
@@ -51,12 +50,10 @@ export const revealData = async (req, res) => {
                     'Content-Type': 'application/json'
                 }
             }).then((response) => {
-                console.log('\nResponse from Axios request on REVEAL:');
-                console.log(response.data.json);
-                // return r.data;
+                res.status(200).json(response.data.json);
             });
 
-        // res.status(200).send('WORKED');
+        // 
 
 
     } catch (error) {
