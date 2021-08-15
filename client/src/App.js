@@ -1,6 +1,6 @@
 import './App.css';
 
-import CollectForm from './components/CollectForm/CollectForm'
+import CollectForm from './components/CollectForm';
 
 
 function App() {
