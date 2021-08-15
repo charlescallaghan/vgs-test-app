@@ -3,7 +3,7 @@ import { Context } from '../Store'
 import axios from 'axios'
 import '../App.css'
 
-const RedactForm = () => {
+const RevealForm = () => {
 
     const [tokenisedData, setTokenisedData] = useContext(Context);
 
@@ -18,7 +18,7 @@ const RedactForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const tokens = tokenisedData;
-        axios.post('https://e1827c52d684.ngrok.io/data/redact', tokens)
+        axios.post('https://e1827c52d684.ngrok.io/data/reveal', tokens)
         .then(response => console.log(response));
 
     }
@@ -32,10 +32,10 @@ const RedactForm = () => {
                     <input id="cvc-code" className="form-field" placeholder="CVC"></input>
                 </div>
                 <button onClick={handleClick} className="form-button">Fill In Aliased Data</button>
-                <button type="submit" className="form-button">Redact</button>
+                <button type="submit" className="form-button">Reveal</button>
             </form>
 
     )
 }
 
-export default RedactForm
+export default RevealForm

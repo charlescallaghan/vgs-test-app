@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Nav() {
-    
+
     return (
         <nav>
             <h1>VGS Test App</h1>
@@ -10,8 +10,8 @@ function Nav() {
                 <Link to='/'>
                     <li>Collect Form</li>
                 </Link>
-                <Link to='/redact'>
-                    <li>Redact Form</li>
+                <Link to='/reveal'>
+                    <li>Reveal Form</li>
                 </Link>
             </ul>
         </nav>

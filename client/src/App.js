@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import CollectForm from './components/CollectForm';
-import RedactForm from './components/RedactForm';
+import RevealForm from './components/RevealForm';
 import Store from './Store'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -18,8 +18,8 @@ function App() {
             <Route path='/' exact>
               <CollectForm />
             </Route>
-            <Route path='/redact' exact>
-              <RedactForm />
+            <Route path='/reveal' exact>
+              <RevealForm />
             </Route>
           </Switch>
         </div>
