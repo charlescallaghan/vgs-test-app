@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Nav() {
-    return(
+    return (
         <nav>
             <h1>VGS Test App</h1>
             <ul className='nav-links'>
-                <li>Collect Form</li>
-                <li>Redact Form</li>
+                <Link to='/'>
+                    <li>Collect Form</li>
+                </Link>
+                <Link to='/redact'>
+                    <li>Redact Form</li>
+                </Link>
             </ul>
         </nav>
     )

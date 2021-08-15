@@ -1,17 +1,19 @@
 import './App.css';
-
 import Nav from './components/Nav';
 import CollectForm from './components/CollectForm';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <Router>
+      <div className="App">
         <Nav />
-        <CollectForm />
-      </header>
-    </div>
+        <Switch>
+          <Route path='/' exact component={CollectForm} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
