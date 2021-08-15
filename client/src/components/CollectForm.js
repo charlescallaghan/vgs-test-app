@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './collect-form-styles.css'
+import '../App.css'
 
 const CollectForm = () => {
 

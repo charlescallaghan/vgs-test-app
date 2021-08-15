@@ -1,5 +1,6 @@
 import './App.css';
 
+import Nav from './components/Nav';
 import CollectForm from './components/CollectForm';
 
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>VGS Test App</h1>
+        <Nav />
         <CollectForm />
       </header>
     </div>

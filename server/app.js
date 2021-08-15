@@ -1,4 +1,5 @@
 import express from 'express';
+require('dotenv').config()
 
 import dataRoutes from './routes/data.js'
 
