@@ -42,13 +42,13 @@ iframe {
   display: flex;
   flex-flow: wrap;
 }
-.form-field-group div {
+.form-field-group div, .form-field-group input {
   flex: 0 0 50%;
 }
-.form-field-group div:first-child {
+.form-field-group div:first-child, .form-field-group input:first-child {
   border-radius: 4px 0 0 4px;
 }
-.form-field-group div:last-child {
+.form-field-group div:last-child, .form-field-group input:last-child {
   border-radius: 0 4px 4px 0;
 }
 .form-button {

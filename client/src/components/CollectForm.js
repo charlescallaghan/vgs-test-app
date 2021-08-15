@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { Context } from '../Store'
 import '../App.css'
 
 const CollectForm = () => {
 
     const [form, setForm] = useState({});
     const [isLoaded, scriptLoaded] = useState(false);
+    const [tokenisedData, setTokenisedData] = useContext(Context);
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -58,12 +60,13 @@ const CollectForm = () => {
             {},
             (status, response) => {
                 console.log(status, response);
+                setTokenisedData(response)
+                console.log(tokenisedData)
             },
             (error) => {
                 console.log(error);
             }
         )
-
     }
 
     return (
