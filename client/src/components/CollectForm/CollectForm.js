@@ -1,16 +1,18 @@
 import React from 'react'
+import axios from 'axios'
 
 class CollectForm extends React.Component {
 
     handleFormSubmit = (event) => {
+        event.preventDefault();
         const cardNumber = event.target.cardNumber.value;
         const expDate = event.target.expDate.value;
         const cvv = event.target.cvv.value;
+        const userData = {cardNumber, expDate, cvv}
 
-        event.preventDefault();
-        console.log('Card Number : ' + cardNumber)
-        console.log('Exp. Date : ' + expDate)
-        console.log('CVV : ' + cvv)
+        console.log(cardNumber, expDate, cvv)
+        axios.post('http://localhost:3001/data/', userData).then((res) => console.log(res));
+
     }
 
     render() {
