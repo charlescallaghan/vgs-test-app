@@ -8,6 +8,21 @@ const CollectForm = () => {
     const [isLoaded, scriptLoaded] = useState(false);
     const [tokenisedData, setTokenisedData] = useContext(Context);
 
+    const css = {
+        fontFamily: '"Helvetica Neue", Helvetica',
+        boxSizing: "border-box",
+        lineHeight: "1.5em",
+        fontSize: "14px",
+        fontWeight: "200",
+        border: "none",
+        color: "#31325F",
+        width: "100%",
+        height: "100%",
+        "&::placeholder": {
+          color: "#CFD7E0"
+        }
+      };
+
     useEffect(() => {
         const script = document.createElement("script");
         script.src = 'https://js.verygoodvault.com/vgs-collect/2.9.0/vgs-collect.js';
@@ -30,6 +45,7 @@ const CollectForm = () => {
                 placeholder: 'Card number',
                 showCardIcon: true,
                 validations: ['required', 'validCardNumber'],
+                css
             });
 
             vgsForm.field('#cvc-code', {
@@ -40,6 +56,7 @@ const CollectForm = () => {
                 placeholder: 'CVC',
                 maxLength: 3,
                 validations: ['required', 'validCardSecurityCode'],
+                css
             });
 
             vgsForm.field('#cc-exp-date', {
@@ -49,6 +66,7 @@ const CollectForm = () => {
                 errorColor: '#D8000C',
                 placeholder: 'MM / YY',
                 validations: ['required', 'validCardExpirationDate'],
+                css
             });
         }
     }, [isLoaded]);
@@ -69,15 +87,37 @@ const CollectForm = () => {
     }
 
     return (
+
+        <>
+        <form id="collect-form" onSubmit={handleFormSubmit}>
+          <div className="group">
+            <label>
+              <span>Card number</span>
+              <div id="cc-number" className="field" />
+            </label>
+            <label>
+              <span>Expiry date</span>
+              <div id="cc-exp-date" className="field" />
+            </label>
+            <label>
+              <span>CVC</span>
+              <div id="cvc-code" className="field" />
+            </label>
+          </div>
+          <button type="submit" onClick={handleFormSubmit}>
+            Submit payment
+          </button>
+        </form>
+      </>
             
-            <form onSubmit={handleFormSubmit} className="form">
-                <div id="cc-number" className="form-field"></div>
-                <div className="form-field-group">
-                    <div id="cc-exp-date" className="form-field"></div>
-                    <div id="cvc-code" className="form-field"></div>
-                </div>
-                <button type="submit" className="form-button">Submit</button>
-            </form>
+            // <form onSubmit={handleFormSubmit} className="form">
+            //     <div id="cc-number" className="form-field"></div>
+            //     <div className="form-field-group">
+            //         <div id="cc-exp-date" className="form-field"></div>
+            //         <div id="cvc-code" className="form-field"></div>
+            //     </div>
+            //     <button type="submit" className="form-button">Submit</button>
+            // </form>
 
     )
 }
