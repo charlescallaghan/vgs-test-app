@@ -61,7 +61,6 @@ const CollectForm = () => {
             (status, response) => {
                 console.log(status, response);
                 setTokenisedData(response)
-                console.log(tokenisedData)
             },
             (error) => {
                 console.log(error);
