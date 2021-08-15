@@ -1,14 +1,12 @@
 export const getData = (req, res) => {
     
-    const confidentialData = req.body;
+    const tokenisedData = req.body;
 
-    console.log('working');
+    console.log(tokenisedData)
 
     try {
 
-        console.log(confidentialData)
-
-        res.status(200).send('DATA RECEIVED');
+        res.status(200).json({ tokenisedData: tokenisedData });
         
 
     } catch (error) {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './collect-form-styles.css'
-import axios from 'axios'
+import './collect-form-styles.css'
 
 const CollectForm = () => {
 
@@ -18,7 +17,6 @@ const CollectForm = () => {
     useEffect(() => {
         if (isLoaded) {
             const vgsForm = window.VGSCollect.create('tntomnhqfaj', 'SANDBOX', (state) => {
-                // console.log(state);
             });
             setForm(vgsForm);
 
