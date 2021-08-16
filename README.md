@@ -14,8 +14,10 @@ This is an application testing some functionalities of [Very Good Security](http
 - In the server folder create a ```.env``` file and add ```VGS_OUTBOUND_PROXY```, ```VGS_PROXY_AUTH (<username>:<password>```, and ```VGS_VAULT_ID```. Also add the SANDBOX ```key.pem``` file to the server folder.
 - In the client folder, update the ```ngrokURL``` variable on line 8 with your relevant ngrok tunnel address.
 - Access the client folder and the server folder from your terminal and run ```npm start``` in each one.
+  - Client is running on localhost:3000 and Server is running on localhost:3001
 
 ## Usage
-1. Enter sensitive data on the Collect Form page
-2. Click the Fill In Aliased Data Button
-3. Click the Reveal Button
+- Enter sensitive data on the Collect Form page
+- Open the Reveal Form page
+  - Click the Fill In Aliased Data Button
+  - Click the Reveal Button
