@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Context } from '../Store'
 import axios from 'axios'
 import '../App.css'
@@ -9,6 +9,14 @@ const RevealForm = () => {
 
     const [tokenisedData] = useContext(Context);
     const [buttonState, toggleButton] = useState(true)
+
+    useEffect(() => {
+      if (Object.keys(tokenisedData).length > 0) {
+        toggleButton(false)
+      } else {
+        toggleButton(true)
+      }
+  });
 
     let cardNumber = useRef();
     let expDate = useRef();
@@ -52,8 +60,8 @@ const RevealForm = () => {
               <input id="cvc-code" className="field" disabled={true} ref={cvc}/>
             </label>
           </div>
-          <button onClick={handleClick} className="form-button">Fill In Aliased Data</button>
-          <button type="submit" className="form-button" disabled={!tokenisedData}>Reveal</button>
+          <button onClick={handleClick} className="form-button" disabled={buttonState}>Fill In Aliased Data</button>
+          <button type="submit" className="form-button" disabled={buttonState}>Reveal</button>
         </form>
       </>
 
