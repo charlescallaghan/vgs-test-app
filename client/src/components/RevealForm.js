@@ -1,29 +1,36 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Context } from '../Store'
 import axios from 'axios'
 import '../App.css'
 
 const RevealForm = () => {
 
-    const [tokenisedData, setTokenisedData] = useContext(Context);
+  const ngrokURL = 'https://1596b6d695be.ngrok.io'
+
+    const [tokenisedData] = useContext(Context);
+    const [buttonState, toggleButton] = useState(true)
+
+    let cardNumber = useRef();
+    let expDate = useRef();
+    let cvc = useRef();
 
     const handleClick = (event) => {
         event.preventDefault();
         const { card_number, card_exp, card_cvc } = tokenisedData.tokenisedData;
-        document.getElementById("cc-number").setAttribute('value', card_number);
-        document.getElementById("cc-exp-date").setAttribute('value', card_exp);
-        document.getElementById("cvc-code").setAttribute('value', card_cvc);
+        cardNumber.current.setAttribute('value', card_number);
+        expDate.current.setAttribute('value', card_exp);
+        cvc.current.setAttribute('value', card_cvc);
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const tokens = tokenisedData;
-        axios.post('https://e1827c52d684.ngrok.io/data/reveal', tokens)
+        axios.post(`${ngrokURL}/data/reveal`, tokens)
         .then(response => {
             const { card_number, card_exp, card_cvc } = response.data;
-            document.getElementById("cc-number").setAttribute('value', card_number);
-            document.getElementById("cc-exp-date").setAttribute('value', card_exp);
-            document.getElementById("cvc-code").setAttribute('value', card_cvc);
+            cardNumber.current.setAttribute('value', card_number);
+            expDate.current.setAttribute('value', card_exp);
+            cvc.current.setAttribute('value', card_cvc);
         })
     }
 
@@ -34,19 +41,19 @@ const RevealForm = () => {
           <div className="group">
             <label>
               <span>Card number</span>
-              <input id="cc-number" className="field" disabled={true}/>
+              <input id="cc-number" className="field" disabled={true} ref={cardNumber}/>
             </label>
             <label>
               <span>Expiry date</span>
-              <input id="cc-exp-date" className="field" disabled={true}/>
+              <input id="cc-exp-date" className="field" disabled={true} ref={expDate}/>
             </label>
             <label>
               <span>CVC</span>
-              <input id="cvc-code" className="field" disabled={true}/>
+              <input id="cvc-code" className="field" disabled={true} ref={cvc}/>
             </label>
           </div>
           <button onClick={handleClick} className="form-button">Fill In Aliased Data</button>
-          <button type="submit" className="form-button">Reveal</button>
+          <button type="submit" className="form-button" disabled={!tokenisedData}>Reveal</button>
         </form>
       </>
 

@@ -77,7 +77,6 @@ const CollectForm = () => {
             '/data',
             {},
             (status, response) => {
-                console.log(status, response);
                 setTokenisedData(response)
             },
             (error) => {
