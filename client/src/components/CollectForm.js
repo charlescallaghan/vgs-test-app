@@ -1,27 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../Store'
 import '../App.css'
+import css from '../iFrame'
 
 const CollectForm = () => {
 
     const [form, setForm] = useState({});
     const [isLoaded, scriptLoaded] = useState(false);
     const [tokenisedData, setTokenisedData] = useContext(Context);
-
-    const css = {
-        fontFamily: '"Helvetica Neue", Helvetica',
-        boxSizing: "border-box",
-        lineHeight: "1.5em",
-        fontSize: "14px",
-        fontWeight: "200",
-        border: "none",
-        color: "#31325F",
-        width: "100%",
-        height: "100%",
-        "&::placeholder": {
-          color: "#CFD7E0"
-        }
-      };
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -78,6 +64,7 @@ const CollectForm = () => {
             {},
             (status, response) => {
                 setTokenisedData(response)
+                alert('Payment info received! Check and reveal your aliased details on the next page...')
             },
             (error) => {
                 console.log(error);
@@ -108,16 +95,6 @@ const CollectForm = () => {
           </button>
         </form>
       </>
-            
-            // <form onSubmit={handleFormSubmit} className="form">
-            //     <div id="cc-number" className="form-field"></div>
-            //     <div className="form-field-group">
-            //         <div id="cc-exp-date" className="form-field"></div>
-            //         <div id="cvc-code" className="form-field"></div>
-            //     </div>
-            //     <button type="submit" className="form-button">Submit</button>
-            // </form>
-
     )
 }
 
