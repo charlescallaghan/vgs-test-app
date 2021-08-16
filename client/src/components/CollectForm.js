@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './collect-form-styles.css'
+import React, { useEffect, useState, useContext } from 'react';
+import { Context } from '../Store'
+import '../App.css'
+import css from '../iFrame'
 
 const CollectForm = () => {
 
     const [form, setForm] = useState({});
     const [isLoaded, scriptLoaded] = useState(false);
+    const [tokenisedData, setTokenisedData] = useContext(Context);
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -28,6 +31,7 @@ const CollectForm = () => {
                 placeholder: 'Card number',
                 showCardIcon: true,
                 validations: ['required', 'validCardNumber'],
+                css
             });
 
             vgsForm.field('#cvc-code', {
@@ -38,6 +42,7 @@ const CollectForm = () => {
                 placeholder: 'CVC',
                 maxLength: 3,
                 validations: ['required', 'validCardSecurityCode'],
+                css
             });
 
             vgsForm.field('#cc-exp-date', {
@@ -47,6 +52,7 @@ const CollectForm = () => {
                 errorColor: '#D8000C',
                 placeholder: 'MM / YY',
                 validations: ['required', 'validCardExpirationDate'],
+                css
             });
         }
     }, [isLoaded]);
@@ -57,26 +63,38 @@ const CollectForm = () => {
             '/data',
             {},
             (status, response) => {
-                console.log(status, response);
+                setTokenisedData(response)
+                alert('Payment info received! Check and reveal your aliased details on the next page...')
             },
             (error) => {
                 console.log(error);
             }
         )
-
     }
 
     return (
-            
-            <form onSubmit={handleFormSubmit} className="form">
-                <div id="cc-number" className="form-field"></div>
-                <div className="form-field-group">
-                    <div id="cc-exp-date" className="form-field"></div>
-                    <div id="cvc-code" className="form-field"></div>
-                </div>
-                <button type="submit" className="form-button">Submit</button>
-            </form>
 
+        <>
+        <form id="collect-form" onSubmit={handleFormSubmit}>
+          <div className="group">
+            <label>
+              <span>Card number</span>
+              <div id="cc-number" className="field" />
+            </label>
+            <label>
+              <span>Expiry date</span>
+              <div id="cc-exp-date" className="field" />
+            </label>
+            <label>
+              <span>CVC</span>
+              <div id="cvc-code" className="field" />
+            </label>
+          </div>
+          <button type="submit" onClick={handleFormSubmit}>
+            Submit payment
+          </button>
+        </form>
+      </>
     )
 }
 
