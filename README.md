@@ -17,7 +17,7 @@ This is an application testing some functionalities of [Very Good Security](http
   - Client is running on localhost:3000 and Server is running on localhost:3001
 
 ## Usage
-- Enter sensitive data on the Collect Form page
+- Enter sensitive data on the Collect Form page and click Submit
 - Open the Reveal Form page
   - Click the Fill In Aliased Data Button
   - Click the Reveal Button
