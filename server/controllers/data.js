@@ -21,10 +21,6 @@ export const getData = (req, res) => {
 
 export const revealData = async (req, res) => {
 
-    // console.log(process.env.VGS_PEM)
-    // const pem = process.env.VGS_PEM.replace(/\\n/g, '\n');
-    // console.log(pem)
-
     const tunnelingAgent = tunnel.httpsOverHttp({
         ca: [fs.readFileSync('./key.pem')],
         proxy: {
