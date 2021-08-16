@@ -5,6 +5,8 @@ import '../App.css'
 
 const RevealForm = () => {
 
+  console.log('Welcome to the trial branch!')
+
   const ngrokURL = 'https://1596b6d695be.ngrok.io'
 
     const [tokenisedData] = useContext(Context);
