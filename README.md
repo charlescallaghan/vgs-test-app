@@ -5,7 +5,7 @@
 
 This is an application testing some functionalities of [Very Good Security](https://www.verygoodsecurity.com/). It allows the user to enter secure information which will then be tokenised by VGS and then reveal the original tokenised information back to the user.
 
-<img src='https://i.ibb.co/TP47S0G/Screenshot-2021-08-16-at-13-27-54.png' alt='VGS Test App Screenshot'/>
+<img src='https://github.com/charlescallaghan/the-vampyre-king/blob/master/VGS%20Test%20App.gif?raw=true' alt='VGS Test App Screenshot'/>
 
 ## Installation
 
